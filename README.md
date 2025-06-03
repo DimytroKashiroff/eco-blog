@@ -29,9 +29,7 @@ print("Bot Receiver running...")
 
 
 nano docker-compose.yml
-yaml
-Копировать
-Редактировать
+
 version: '3'
 services:
   rabbitmq:
@@ -42,10 +40,11 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+
+      
 🗂 КРОК 3: Додай файли до Git, зроби коміт і запуш
-bash
-Копировать
-Редактировать
+
+
 git add .
 git commit -m "Initial commit: add bot_sender.py, bot_receiver.py, and docker-compose.yml"
 git branch -M main
