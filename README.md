@@ -1,8 +1,9 @@
-код файлу bot_sender.py (Telegram бот №1)
+код файлу bot_sender.py (Telegram бот №1 – RemoteLectureBot)
 
+# RemoteLectureBot – надсилає повідомлення в RabbitMQ
 import pika
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
 # Функція надсилання повідомлення в RabbitMQ
 def send_to_rabbitmq(username, text):
@@ -22,22 +23,21 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Запуск Telegram-бота
 if __name__ == '__main__':
-    app = ApplicationBuilder().token("ТВОКЕН_ТУТ").build()
+    app = ApplicationBuilder().token("7606943719:AAGYjc6qP-3-k6tcMJrVFk1RFUXGF2tyLTw").build()
 
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    print("Bot No1 is running...")
+    print("RemoteLectureBot is running...")
     app.run_polling()
+код файлу ✅ bot_receiver.py (Telegram бот №2 – Lab7ReceiverBot)
 
-
-код файлу bot_receiver.py (Telegram бот №2)
-
+# Lab7ReceiverBot – перевіряє чергу та надсилає повідомлення
 import pika
 import asyncio
 from telegram import Bot
 
-bot_token = "ТВОКЕН_ТУТ"
-chat_id = "ID_КОРИСТУВАЧА_ТУТ"  # Отримай його вручну або через бота
+bot_token = "7560158248:AAF2WtTCAKiwF3uHQtKuMSMw2cKqIn-uXuk"
+chat_id = "ID_КОРИСТУВАЧА_ТУТ"  # заміни на свій реальний chat_id
 
 bot = Bot(token=bot_token)
 
@@ -61,5 +61,5 @@ async def check_queue():
 
 # Запуск
 if __name__ == '__main__':
-    print("Bot No2 is running...")
+    print("Lab7ReceiverBot is running...")
     asyncio.run(check_queue())
